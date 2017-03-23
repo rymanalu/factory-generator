@@ -1,0 +1,28 @@
+{
+    "name": "rymanalu/factory-generator",
+    "description": "Laravel 5 Model Factory Generator.",
+    "keywords": ["laravel", "model", "factory", "model factory", "generator"],
+    "type": "library",
+    "require": {
+        "php": ">=5.5.9",
+        "illuminate/console": "^5.1",
+        "illuminate/support": "^5.1"
+    },
+    "require-dev": {
+        "mockery/mockery": "~0.9",
+        "phpunit/phpunit": "~4.8"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Roni Yusuf Manalu",
+            "email": "rymanalu@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Rymanalu\\FactoryGenerator\\": "src/"
+        }
+    },
+    "homepage": "https://github.com/rymanalu/factory-generator"
+}

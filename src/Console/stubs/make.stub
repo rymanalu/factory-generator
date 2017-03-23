@@ -1,0 +1,8 @@
+<?php
+
+use DummyClassWithNamespace;
+use Faker\Generator as Faker;
+
+$factory->define(DummyClass::class, function (Faker $faker) {
+    fields
+});
