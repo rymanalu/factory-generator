@@ -21,7 +21,7 @@ class MakeCommand extends GeneratorCommand
     protected $description = 'Create a new model factory file';
 
     /**
-     * The type of class being generated.
+     * The type of file being generated.
      *
      * @var string
      */
@@ -45,7 +45,7 @@ class MakeCommand extends GeneratorCommand
      */
     protected function getPath($name)
     {
-        $name = $this->getClassName($name);
+        $name = class_basename($name);
 
         return $this->laravel['path.database'].'/factories/'.$name.'Factory.php';
     }
@@ -74,7 +74,7 @@ class MakeCommand extends GeneratorCommand
     {
         $stub = str_replace(
             ['DummyClassWithNamespace', 'DummyClass'],
-            [$name, $this->getClassName($name)],
+            [$name, class_basename($name)],
             $stub
         );
 
@@ -94,26 +94,13 @@ class MakeCommand extends GeneratorCommand
             return str_replace('fields', '//', $stub);
         }
 
-        foreach ($fillable as $column) {
-            if (! isset($fields)) {
-                $fields = 'return [';
-            }
+        $fields = 'return [';
 
-            $fields .= PHP_EOL.str_repeat(' ', 8)."'{$column}' => \$faker->word,";
+        foreach ($fillable as $column) {
+            $fields .= PHP_EOL."        '{$column}' => \$faker->word,";
         }
 
-        return str_replace('fields', $fields.PHP_EOL.str_repeat(' ', 4).'];', $stub);
-    }
-
-    /**
-     * Get the class name for the given full class name.
-     *
-     * @param  string  $name
-     * @return string
-     */
-    protected function getClassName($name)
-    {
-        return last(explode('\\', $name));
+        return str_replace('fields', $fields.PHP_EOL.'    ];', $stub);
     }
 
     /**
