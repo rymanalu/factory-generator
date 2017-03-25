@@ -34,7 +34,7 @@ $factory->define(Post::class, function (Faker $faker) {
     //
 });
 ```
-This command also using the fillable array of the model and pair it to `$faker->word` as default (you can change it to the proper [Faker](https://github.com/fzaninotto/Faker) Formatters or other value later) in the generated model factory.
+This command also using the fillable array of the model and pair all of fillable values to `$faker->word` as default (you can change it to the proper [Faker](https://github.com/fzaninotto/Faker) Formatters or other value later) in the generated model factory.
 
 For example, if the `App\Post` has fillable array like this:
 ```php
