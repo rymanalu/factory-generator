@@ -22,7 +22,7 @@ Example:
 ```
 php artisan make:factory "App\Post"
 ```
-The command will generate a file named `PostFactory.php` in `path/to/your-laravel-project/database/factories` directory:
+The command will generate a file named `PostFactory.php` in `/path/to/your-laravel-project/database/factories` directory:
 
 ```php
 <?php
@@ -34,7 +34,7 @@ $factory->define(Post::class, function (Faker $faker) {
     //
 });
 ```
-This command also using the fillable array of the model and assign it to `$faker->word` as default (you can change it to the proper [Faker](https://github.com/fzaninotto/Faker) Formatters later) in the generated model factory.
+This command also using the fillable array of the model and pair it to `$faker->word` as default (you can change it to the proper [Faker](https://github.com/fzaninotto/Faker) Formatters or other value later) in the generated model factory.
 
 For example, if the `App\Post` has fillable array like this:
 ```php
