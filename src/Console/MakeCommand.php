@@ -38,6 +38,17 @@ class MakeCommand extends GeneratorCommand
     }
 
     /**
+     * Parse the class name and format according to the root namespace.
+     *
+     * @param  string  $name
+     * @return string
+     */
+    protected function qualifyClass($name)
+    {
+        return class_basename($name);
+    }
+
+    /**
      * Get the destination class path.
      *
      * @param  string  $name
@@ -45,9 +56,7 @@ class MakeCommand extends GeneratorCommand
      */
     protected function getPath($name)
     {
-        $name = class_basename($name);
-
-        return $this->laravel['path.database'].'/factories/'.$name.'Factory.php';
+        return $this->laravel->databasePath().'/factories/'.$name.'Factory.php';
     }
 
     /**
@@ -74,7 +83,7 @@ class MakeCommand extends GeneratorCommand
     {
         $stub = str_replace(
             ['DummyClassWithNamespace', 'DummyClass'],
-            [$name, class_basename($name)],
+            [$this->argument('name'), $name],
             $stub
         );
 
@@ -90,7 +99,7 @@ class MakeCommand extends GeneratorCommand
      */
     protected function replaceFields($name, &$stub)
     {
-        if (! $fillable = $this->getFillable($name)) {
+        if (empty($fillable = $this->getFillable())) {
             return str_replace('fields', '//', $stub);
         }
 
@@ -106,13 +115,12 @@ class MakeCommand extends GeneratorCommand
     /**
      * Get the fillable attributes for the classname model.
      *
-     * @param  string  $name
      * @return array
      */
-    protected function getFillable($name)
+    protected function getFillable()
     {
-        $model = new $name;
+        $model = $this->argument('name');
 
-        return $model->getFillable();
+        return (new $model)->getFillable();
     }
 }
