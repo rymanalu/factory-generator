@@ -1,6 +1,6 @@
 # Laravel 5 Model Factory Generator
 
-This package offers a lazy way to create a new model factory files, since Laravel has no Artisan command to generate it.
+This package offers a lazy way to create a new model factory files, since Laravel (< 5.5) have no Artisan command to generate it.
 
 ## Installation
 First, install this package via the Composer package manager:
@@ -8,14 +8,14 @@ First, install this package via the Composer package manager:
 composer require rymanalu/factory-generator
 ```
 
-Next, you should add the `FactoryGeneratorServiceProvider` to the `providers` array of your `config/app.php` configuration file:
+If you are using Laravel < 5.5, you should add the `FactoryGeneratorServiceProvider` to the `providers` array of your `config/app.php` configuration file:
 ```php
 Rymanalu\FactoryGenerator\FactoryGeneratorServiceProvider::class,
 ```
 Now, you should be able to generate a new model factory file by executing `php artisan make:factory` command.
 
 ## Usage
-`php artisan make:factory` accept one argument: the model class name with the namespace. Make sure the model is already exists before execute this command.
+`php artisan make:factory` accept one argument: the model class name with the namespace. Make sure the model is already exists before executing this command.
 
 Example:
 

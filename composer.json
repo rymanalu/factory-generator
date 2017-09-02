@@ -20,5 +20,12 @@
             "Rymanalu\\FactoryGenerator\\": "src/"
         }
     },
-    "homepage": "https://github.com/rymanalu/factory-generator"
+    "homepage": "https://github.com/rymanalu/factory-generator",
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Rymanalu\\FactoryGenerator\\FactoryGeneratorServiceProvider"
+            ]
+        }
+    }
 }
