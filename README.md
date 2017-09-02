@@ -8,7 +8,7 @@ First, install this package via the Composer package manager:
 composer require rymanalu/factory-generator
 ```
 
-If you are using Laravel < 5.5, you should add the `FactoryGeneratorServiceProvider` to the `providers` array of your `config/app.php` configuration file:
+Next, you should add the `FactoryGeneratorServiceProvider` to the `providers` array of your `config/app.php` configuration file:
 ```php
 Rymanalu\FactoryGenerator\FactoryGeneratorServiceProvider::class,
 ```
